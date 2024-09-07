@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Expandable Content</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Main Title</h1>
+        <div class="additional-text">Additional text super</div>
+        
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-header" data-index="1">Heading</button>
+                <div class="accordion-content">
+                    <p>Content for the first section goes here.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header" data-index="2">Heading</button>
+                <div class="accordion-content">
+                    <p>Content for the second section goes here.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header" data-index="3">Heading</button>
+                <div class="accordion-content">
+                    <p>Content for the third section goes here.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header" data-index="4">Heading</button>
+                <div class="accordion-content">
+                    <p>Content for the fourth section goes here.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header" data-index="5">Heading</button>
+                    <div class="accordion-content">
+                        <p>Content for the first section goes here.</p>
+                        <button class="order-now-button" data-service="Service 1">Order Now</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="orderForm">
+                <label for="service">Service:</label>
+                <select id="service" name="service">
+                    <option value="service1">Service 1</option>
+                    <option value="service2">Service 2</option>
+                </select>
+    
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+    
+                <label for="timeWindow">Time Window:</label>
+                <select id="timeWindow" name="timeWindow">
+                    <option value="morning">Morning</option>
+                    <option value="afternoon">Afternoon</option>
+                </select>
+    
+                <label for="comments">Comments:</label>
+                <textarea id="comments" name="comments"></textarea>
+    
+                <div id="priceDisplay">Price: $<span id="price">0</span></div>
+    
+                <button type="button" id="calculatePrice">Calculate Price</button>
+    
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+    
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+    
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+    
+                <label for="payment">Payment:</label>
+                <select id="payment" name="payment">
+                    <option value="cash">Cash</option>
+                    <option value="card">Card</option>
+                </select>
+    
+                <button type="submit" id="submitOrder">Order</button>
+            </form>
+        </div>
+    </div>    
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-box">
+            <div class="footer-box-inner">
+                <div class="footer-box-front">Box 1</div>
+                <div class="footer-box-back">Expanded Content 1</div>
+            </div>
+        </div>
+        <div class="footer-box">
+            <div class="footer-box-inner">
+                <div class="footer-box-front">Box 2</div>
+                <div class="footer-box-back">Expanded Content 2</div>
+            </div>
+        </div>
+        <div class="footer-box">
+            <div class="footer-box-inner">
+                <div class="footer-box-front">Box 3</div>
+                <div class="footer-box-back">Expanded Content 3</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
