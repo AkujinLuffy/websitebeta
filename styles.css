@@ -299,3 +299,291 @@ footer {
       width: 80%;
   }
 }
+/* Reset default styles 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+*/
+/* Slider container styles */
+.slider-container {
+  position: relative;
+  width: 100%; /* Full width of the page */
+  height: 30vh; /* Increased to 30% of the viewport height (10% increase) */
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  border-radius: 20px; /* Rounded edges for the container */
+}
+
+/* Slide styles */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  border-radius: 20px; /* Rounded edges for each slide */
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px; /* Rounded edges for images */
+}
+
+/* Slide content styles */
+.slide-content {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.slide-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.slide-content p {
+  font-size: 1.2rem;
+}
+
+/* Navigation arrow styles */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem; /* Reduced from 1.8rem */
+  background: rgba(0,0,0,0.3);
+  color: white;
+  border: none;
+  padding: 8px 12px; /* Reduced from 12px 18px */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  border-radius: 50%;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Fixed width */
+  height: 40px; /* Fixed height */
+}
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.5);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev {
+  left: 10px; /* Moved closer to the edge */
+}
+
+.next {
+  right: 10px; /* Moved closer to the edge */
+}
+
+/* You can use icons instead of text for a more modern look */
+.prev::before {
+  content: "‹";
+}
+
+.next::before {
+  content: "›";
+}
+
+/* Indicator styles */
+.indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.indicator.active {
+  background: white;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .slider-container {
+    height: 40vh;
+  }
+
+  .slide-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .slide-content p {
+    font-size: 1rem;
+  }
+
+  .prev, .next {
+    font-size: 1rem;
+    padding: 6px 10px;
+    width: 30px; /* Even smaller on mobile */
+    height: 30px; /* Even smaller on mobile */
+  }
+}
+/* Keyframe Animations */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutLeft {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(-50px); opacity: 0; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(50px); opacity: 0; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes zoomOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(1.05); opacity: 0; }
+}
+
+@keyframes blurIn {
+  from { filter: blur(10px); opacity: 0; }
+  to { filter: blur(0); opacity: 1; }
+}
+
+@keyframes blurOut {
+  from { filter: blur(0); opacity: 1; }
+  to { filter: blur(10px); opacity: 0; }
+}
+/* Basic styling for the content container */
+.content-container {
+  width: 100%;
+  max-width: 340px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* Flip card container */
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 200px;
+  perspective: 1000px; /* Optional for 3D effect */
+}
+
+/* Flip card inner container */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* Trigger the flip on hover for desktops */
+.flip-card:hover .flip-card-inner,
+.flip-card.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front and back of the card */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-front {
+  background-color: #f1f1f1;
+}
+
+.flip-card-back, .is-flipped {
+  background-color: #ddd;
+  transform: rotateY(180deg);
+}
+
+ /* Stylish images inside the card */
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Title and text styles */
+.main-title {
+  font-size: 24px;
+  color: #333;
+  margin-top: 20px;
+}
+
+.main-text {
+  font-size: 16px;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Ensure it works across all devices */
+@media (max-width: 480px) {
+  .main-title {
+      font-size: 20px;
+  }
+  .main-text {
+      font-size: 14px;
+  }
+}
