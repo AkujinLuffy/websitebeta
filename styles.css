@@ -131,8 +131,11 @@ input[type="text"],
 input[type="email"],
 input[type="tel"],
 select,
-textarea {
+textarea,
+input[type="number"],
+input[type="date"] {
   width: 100%;
+  max-width: 100%;
   padding: 8px;
   margin-top: 5px;
   margin-bottom: 15px;
@@ -140,6 +143,17 @@ textarea {
   border: 1px solid #ccc;
   box-sizing: border-box;
   font-size: 14px;
+}
+
+.time-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time-container input[type="number"] {
+  width: 48%;
+  text-align: center;
 }
 
 textarea {
@@ -164,6 +178,10 @@ textarea {
   background-color: #004D40;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+}
+
 .close {
   color: #aaa;
   float: right;
@@ -183,6 +201,7 @@ textarea {
   font-weight: bold;
   color: #00796B;
 }
+
 
 .order-now-button {
   margin-top: 10px;
