@@ -1,15 +1,38 @@
+// Toggle accordion content
 document.querySelectorAll('.accordion-header').forEach(button => {
     button.addEventListener('click', () => {
         const accordionContent = button.nextElementSibling;
 
+        // Toggle active state
         button.classList.toggle('active');
 
+        // Handle expand/collapse animation
         if (button.classList.contains('active')) {
             accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
         } else {
             accordionContent.style.maxHeight = 0;
         }
     });
+});
+
+// Additional code for mobile can ensure the click is responsive
+window.addEventListener('resize', () => {
+    document.querySelectorAll('.accordion-header').forEach(button => {
+        // Remove active state on resize to start collapsed
+        if (window.innerWidth <= 768) {
+            button.classList.remove('active');
+            button.nextElementSibling.style.maxHeight = 0;
+        }
+    });
+});
+
+// Initial load to ensure sections are collapsed
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.nextElementSibling.style.maxHeight = 0;
+        });
+    }
 });
 
 document.querySelectorAll('.footer-box').forEach(box => {
