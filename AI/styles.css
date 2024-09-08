@@ -1,0 +1,301 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #f0f0f0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.additional-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  font-size: 1.2em;
+  position: absolute;
+  left: -50px;
+  top: 150px;
+}
+
+.accordion {
+  margin-top: 20px;
+}
+
+.accordion-item {
+  margin-bottom: 15px;
+  overflow: hidden;
+  border-radius: 25px;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: white;
+  border: none;
+  padding: 20px 0;
+  cursor: pointer;
+  outline: none;
+  font-size: 1.2em;
+  transition: opacity 0.4s ease;
+  border-radius: 25px 25px 0 0;
+}
+
+.accordion-header::before {
+  content: attr(data-index);
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  background-color: #fff;
+  transition: max-height 0.4s ease;
+  border-radius: 0 0 25px 25px;
+}
+
+.accordion-content p {
+  margin: 20px 0;
+  color: #333;
+}
+
+.accordion-item:nth-child(1) .accordion-header {
+  background: linear-gradient(to left, #A5D6A7, #388E3C);
+}
+
+.accordion-item:nth-child(2) .accordion-header {
+  background: linear-gradient(to left, #90CAF9, #1976D2);
+}
+
+.accordion-item:nth-child(3) .accordion-header {
+  background: linear-gradient(to left, #CE93D8, #6A1B9A);
+}
+
+.accordion-item:nth-child(4) .accordion-header {
+  background: linear-gradient(to left, #FFCC80, #F57C00);
+}
+
+.accordion-item:nth-child(5) .accordion-header {
+  background: linear-gradient(to left, #EF9A9A, #D32F2F);
+}
+
+/* Order Now stle */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea,
+input[type="number"],
+input[type="date"] {
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.time-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time-container input[type="number"] {
+  width: 48%;
+  text-align: center;
+}
+
+textarea {
+  resize: vertical;
+}
+
+#calculatePrice, #submitOrder {
+  margin-top: 10px;
+  padding: 12px 24px;
+  background-color: #00796B;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 48%;
+  display: inline-block;
+  font-size: 16px;
+  text-align: center;
+}
+
+#calculatePrice:hover, #submitOrder:hover {
+  background-color: #004D40;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#priceDisplay {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #00796B;
+}
+
+
+.order-now-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #1976D2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.order-now-button:hover {
+  background-color: #155a9c;
+}
+
+#calculatePrice, #submitOrder {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #388E3C;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#calculatePrice:hover, #submitOrder:hover {
+  background-color: #2e6b2d;
+}
+
+/* Footer styles */
+footer {
+  background-color: #333;
+  padding: 40px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 10%;
+  flex-wrap: wrap;
+}
+
+.footer-box {
+  width: calc(33.33% - 13.33px);
+  height: 200px;
+  perspective: 1000px;
+  margin-bottom: 20px;
+}
+
+.footer-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.footer-box:hover .footer-box-inner {
+  transform: rotateY(180deg);
+}
+
+.footer-box-front, .footer-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  color: white;
+  font-size: 1.2em;
+}
+
+.footer-box-front {
+  background-color: #444;
+}
+
+.footer-box-back {
+  background-color: #666;
+  transform: rotateY(180deg);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .footer-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .footer-box {
+      width: 80%;
+  }
+}
