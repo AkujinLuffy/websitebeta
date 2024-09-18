@@ -7,9 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- Main Header -->
+    <div class="main-header">
+        <div class="contact-info">
+            <p><i class="phone-icon"></i> (123) 456-7890</p>
+            <p><i class="email-icon"></i> info@yourwebsite.com</p>
+        </div>
+    <h1 class="site-title">Your Website Name</h1>
+    </div>
     <div class="container">
-        <!-- Main Title -->
-        <h1>Main Title</h1>
         <div class="additional-text">Additional text super</div>
         <!-- Modern Slider Container -->
 <div class="slider-container">
@@ -105,59 +111,57 @@
                 <button class="accordion-header" data-index="5">Heading</button>
                     <div class="accordion-content">
                         <p>Content for the first section goes here.</p>
-                        <button class="order-now-button" data-service="Service 1">Order Now</button>
+                        <button id="orderButton">Order Now</button>
                     </div>
             </div>
         </div>
     </div>
 <!--Order Model -->
-    <div id="orderModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <form id="orderForm">
-                <label for="service">Service:</label>
-                <select id="service" name="service">
-                    <option value="service1">Service 1</option>
-                    <option value="service2">Service 2</option>
-                </select>
-    
-                <label for="date">Date:</label>
-                <input type="date" id="date" name="date" required>
-    
-                <label for="timeWindow">Time Window:</label>
-                    <div class="time-container">
-                        <input type="number" id="hour" name="hour" min="0" max="23" placeholder="HH" required>
-                        <span>:</span>
-                        <input type="number" id="minute" name="minute" min="0" max="59" placeholder="MM" required>
-                    </div>
-                </select>
-    
-                <label for="comments">Comments:</label>
-                <textarea id="comments" name="comments"></textarea>
-    
-                <div id="priceDisplay">Price: $<span id="price">0</span></div>
-    
-                <button type="button" id="calculatePrice">Calculate Price</button>
-    
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-    
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" required>
-    
-                <label for="phone">Phone:</label>
-                <input type="tel" id="phone" name="phone" required>
-    
-                <label for="payment">Payment:</label>
-                <select id="payment" name="payment">
-                    <option value="cash">Cash</option>
-                    <option value="card">Card</option>
-                </select>
-    
-                <button type="submit" id="submitOrder">Order</button>
-            </form>
-        </div>
-    </div>    
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="orderForm">
+            <h2>Select Services</h2>
+            <div id="services">
+                <button type="button" class="service-btn" data-value="Service1">Service 1</button>
+                <button type="button" class="service-btn" data-value="Service2">Service 2</button>
+                <button type="button" class="service-btn" data-value="Service3">Service 3</button>
+                <button type="button" class="service-btn" data-value="Service4">Service 4</button>
+                <button type="button" class="service-btn" data-value="Service5">Service 5</button>
+                <button type="button" class="service-btn" data-value="Service6">Service 6</button>
+                <button type="button" class="service-btn" data-value="Service7">Service 7</button>
+                <button type="button" class="service-btn" data-value="Service8">Service 8</button>
+                <button type="button" class="service-btn" data-value="Service9">Service 9</button>
+                <button type="button" class="service-btn" data-value="Service10">Service 10</button>
+                <button type="button" class="service-btn" data-value="Service11">Service 11</button>
+                <button type="button" class="service-btn" data-value="Service12">Service 12</button>
+                <button type="button" class="service-btn" data-value="Service13">Service 13</button>
+                <button type="button" class="service-btn" data-value="Service14">Service 14</button>
+                <button type="button" class="service-btn" data-value="Service15">Service 15</button>
+            </div>
+
+            <h2>Select Date and Time</h2>
+            <input type="date" id="serviceDate" required>
+            <input type="time" id="serviceTime" required>
+
+            <h2>Contact Information</h2>
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="address" placeholder="Address" required>
+            <input type="tel" id="phone" placeholder="Phone" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <textarea id="comment" placeholder="Leave a comment"></textarea>
+
+            <h2>Payment Method</h2>
+            <select id="paymentMethod" required>
+                <option value="cash">Cash</option>
+                <option value="card">Card</option>
+            </select>
+
+            <div id="priceDisplay">Total Price: 0 lev</div>
+            <button type="submit">Submit Order - Pay Now</button>
+        </form>
+    </div>
+</div>  
 <!-- Footer Content -->
 <footer>
     <div class="footer-container">
@@ -180,9 +184,12 @@
             </div>
         </div>
     </div>
+    <!-- Footer Credits-->
+    <div class="footer-credits">
+        <p>Designed by <a href="https://yourwebsite.com">Your Name</a></p>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </div> 
 </footer>
-
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

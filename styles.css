@@ -5,6 +5,114 @@ body {
   overflow-x: hidden;
   background-color: #f0f0f0;
 }
+
+/* Main Title */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+  .main-header {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .contact-info {
+    color: white;
+    text-align: left;
+  }
+
+  .contact-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+
+  .phone-icon::before {
+    content: "\260E"; /* Unicode for telephone symbol */
+    margin-right: 10px;
+    font-size: 18px;
+  }
+
+  .email-icon::before {
+    content: "\2709"; /* Unicode for envelope symbol */
+    margin-right: 10px;
+    font-size: 18px;
+  }
+
+  /* Title with gradient and light animation */
+  .site-title {
+    font-size: 3em;
+    background: linear-gradient(45deg, #ff6b6b, #f8e9a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0.5em;
+  }
+/* Light pass effect */
+.site-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  animation: light-sweep 3s linear infinite;
+}
+
+/* Light animation keyframes */
+@keyframes light-sweep {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Hover effects */
+.contact-info p {
+  margin: 0.5em 0;
+  cursor: pointer; /* Set cursor to pointer to indicate interactivity */
+}
+
+/* Phone number ring effect on hover */
+.phone-icon:hover {
+  animation: ring 0.5s infinite alternate;
+}
+
+/* Ring effect keyframes */
+@keyframes ring {
+  to { transform: scale(1.2); }
+}
+
+/* Email flying away effect on hover */
+.email-icon {
+  display: inline-block;
+  transition: transform 1s, opacity 1s;
+}
+
+.email-icon:hover {
+  transform: translateX(50px) translateY(-20px);
+  opacity: 0;
+}
+  @media (max-width: 768px) {
+    .main-header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .contact-info {
+      margin-bottom: 15px;
+    }
+
+    .site-title {
+      font-size: 1.5em;
+    }
+  }
+
 /* Main container */
 .container {
   width: 100%;
@@ -97,138 +205,133 @@ h1 {
 }
 
 /* Order Now stle */
+#orderButton {
+  padding: 15px 30px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#orderButton:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
-  left: 0;
+  z-index: 1000;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  width: 90%;
-  max-width: 600px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-  color: #333;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-select,
-textarea,
-input[type="number"],
-input[type="date"] {
-  width: 100%;
-  max-width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
-.time-container {
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
-.time-container input[type="number"] {
-  width: 48%;
-  text-align: center;
+.modal-content {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  overflow-y: auto;
+  max-height: 90vh;
+  animation: fadeIn 0.3s ease-in;
 }
 
-textarea {
-  resize: vertical;
-}
-
-#calculatePrice, #submitOrder {
-  margin-top: 10px;
-  padding: 12px 24px;
-  background-color: #00796B;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 48%;
-  display: inline-block;
-  font-size: 16px;
-  text-align: center;
-}
-
-#calculatePrice:hover, #submitOrder:hover {
-  background-color: #004D40;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }
 
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
+  color: #333;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 24px;
   font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
-.close:hover, .close:focus {
-  color: black;
-  text-decoration: none;
+.close:hover {
+  color: #000;
+}
+
+input, select, textarea {
+  width: calc(100% - 24px);
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: border-color 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #4caf50;
+}
+
+.service-btn {
+  margin: 5px 2px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #4caf50;
+  background-color: #f1f1f1;
+  border: 2px solid #4caf50;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.service-btn.active {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.service-btn:hover {
+  background-color: #e0e0e0;
 }
 
 #priceDisplay {
+  font-size: 20px;
   margin-top: 10px;
-  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
   font-weight: bold;
-  color: #00796B;
 }
 
-
-.order-now-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #1976D2;
+button[type="submit"] {
+  background-color: #2196f3;
   color: white;
   border: none;
+  padding: 14px 20px;
   border-radius: 5px;
   cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
-.order-now-button:hover {
-  background-color: #155a9c;
-}
-
-#calculatePrice, #submitOrder {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #388E3C;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#calculatePrice:hover, #submitOrder:hover {
-  background-color: #2e6b2d;
+button[type="submit"]:hover {
+  background-color: #1976d2;
 }
 
 /* Footer styles */
@@ -287,6 +390,48 @@ footer {
   background-color: #666;
   transform: rotateY(180deg);
 }
+
+/* Footer Credits */
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+  .footer-credits {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    font-size: 14px;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+  }
+
+  .footer-credits p {
+    margin: 5px 0;
+  }
+
+  .footer-credits a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .footer-credits a:hover {
+    color: #ffd700;
+    text-shadow: 0 0 5px rgba(255,215,0,0.5);
+  }
+
+  .heart {
+    color: #ff6b6b;
+    font-size: 18px;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
 
 /* Mobile Styles */
 @media (max-width: 768px) {

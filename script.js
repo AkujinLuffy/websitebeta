@@ -41,61 +41,76 @@ document.querySelectorAll('.footer-box').forEach(box => {
     });
 });
 
-document.querySelectorAll('.order-now-button').forEach(button => {
-    button.addEventListener('click', () => {
-        document.getElementById('orderModal').style.display = 'block';
+document.getElementById('orderButton').onclick = function() {
+    document.getElementById('orderModal').style.display = 'flex';
+    calculatePrice();
+    document.body.style.overflow = "hidden";
+};
+
+document.querySelector('.close').onclick = function() {
+    document.getElementById('orderModal').style.display = 'none';
+    document.body.style.overflow = "auto";
+};
+
+const serviceButtons = document.querySelectorAll('.service-btn');
+let selectedServices = new Set();
+
+// Toggle service selection
+serviceButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        if (selectedServices.has(button.dataset.value)) {
+            selectedServices.delete(button.dataset.value);
+            button.classList.remove('active');
+        } else {
+            selectedServices.add(button.dataset.value);
+            button.classList.add('active');
+        }
+        calculatePrice();
     });
 });
 
-document.querySelector('.close').addEventListener('click', () => {
-    document.getElementById('orderModal').style.display = 'none';
-});
+// Calculate price based on selected services
+function calculatePrice() {
+    let totalPrice = selectedServices.size * 10; // 10 lev per service
+    document.getElementById('priceDisplay').innerText = `Total Price: ${totalPrice} lev`;
+}
 
-window.addEventListener('click', (event) => {
-    if (event.target == document.getElementById('orderModal')) {
-        document.getElementById('orderModal').style.display = 'none';
-    }
-});
-
-document.getElementById('calculatePrice').addEventListener('click', () => {
-    const service = document.getElementById('service').value;
-    const timeWindow = document.getElementById('timeWindow').value;
-
-    let price = 0;
-    if (service === 'service1') {
-        price = timeWindow === 'morning' ? 50 : 60;
-    } else if (service === 'service2') {
-        price = timeWindow === 'morning' ? 70 : 80;
-    }
-
-    document.getElementById('price').textContent = price;
-});
-
-document.getElementById('orderForm').addEventListener('submit', (event) => {
+document.getElementById('orderForm').onsubmit = function(event) {
     event.preventDefault();
 
-    const service = document.getElementById('service').value;
-    const date = document.getElementById('date').value;
-    const timeWindow = document.getElementById('timeWindow').value;
-    const comments = document.getElementById('comments').value;
-    const email = document.getElementById('email').value;
-    const address = document.getElementById('address').value;
-    const phone = document.getElementById('phone').value;
-    const payment = document.getElementById('payment').value;
-    
-    console.log(`Order Details:
-    Service: ${service}
-    Date: ${date}
-    Time Window: ${timeWindow}
-    Comments: ${comments}
-    Email: ${email}
-    Address: ${address}
-    Phone: ${phone}
-    Payment Method: ${payment}`);
+    let date = document.getElementById('serviceDate').value;
+    let time = document.getElementById('serviceTime').value;
+    let name = document.getElementById('name').value;
+    let address = document.getElementById('address').value;
+    let phone = document.getElementById('phone').value;
+    let email = document.getElementById('email').value;
+    let comment = document.getElementById('comment').value;
+    let paymentMethod = document.getElementById('paymentMethod').value;
 
-    alert('Order placed successfully!');
+    // Collect order details
+    let orderDetails = {
+        services: Array.from(selectedServices),
+        date: date,
+        time: time,
+        name: name,
+        address: address,
+        phone: phone,
+        email: email,
+        comment: comment,
+        paymentMethod: paymentMethod
+    };
+
+    // Simulate sending the order details
+    console.log("Order submitted:", orderDetails);
+
+    // Display a confirmation message
+    alert("Your order has been submitted. Thank you!");
+
+    // Close the modal and allow background scroll
     document.getElementById('orderModal').style.display = 'none';
-});
+    document.body.style.overflow = "auto";
+};
+    
 document.addEventListener('DOMContentLoaded', function() {
     // Select all slides and indicators
     const slides = document.querySelectorAll('.slide');
